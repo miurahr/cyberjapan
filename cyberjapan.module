@@ -1,0 +1,50 @@
+<?php
+
+/**
+ * @file
+ * @defgroup cyberjapan CyberJapan: Provides CyberJapan layers to OpenLayers
+ *  The ideas to add 3rd parth layer is inspired from MapBox module.
+ */
+
+/**
+ * Ctools hook
+ */
+function cyberjapan_ctools_plugin_api($module, $api) {
+  if ($module == "openlayers" && $api == 'openlayers_layers') {
+    return array('version' => 1);
+  }
+}
+
+/**
+ * OpenLayers pre-alpha3 compatibility
+ */
+function cyberjapan_openlayers_layers_info() {
+  return cyberjapan_openlayers_layers();
+}
+
+/**
+ * layers hook
+ */
+function cyberjapan_openlayers_layers() {
+  module_load_include('inc', 'cyberjapan', 'includes/cyberjapan.layers');
+  return _cyberjapan_openlayers_layers();
+}
+
+/**
+ * layer_types definition
+ */
+function cyberjapan_openlayers_layer_types() {
+  return array(
+    'openlayers_layer_type_cyberjapan' => array(
+      'title' => t('CyberJapan'),
+      'description' => t('CyberJapan Web Maps'),
+      'type' => 'layer',
+      'path' => drupal_get_path('module', 'cyberjapan') .'/includes/layer_types',
+      'file' => 'cyberjapan.inc',
+      'layer_type' => array(
+        'class' => 'openlayers_layer_type_cyberjapan',
+        'parent' => 'openlayers_layer_type',
+      ),
+    ),
+  );
+}

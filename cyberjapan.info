@@ -1,0 +1,8 @@
+name = CyberJapan
+description = CyberJapan Layers for OpenLayers
+dependencies[] = openlayers
+version = "6.x-1.x-dev"
+core = "6.x"
+project = "cyberjapan"
+package = "OpenLayers"
+
