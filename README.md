@@ -1,7 +1,16 @@
 CyberJapan module for drupal/openlayers
 =======================================
 
-Drupal Cyber Japan layer for openlayers that provides Digital Japan tile map provided by GSI, Japan.
+CyberJapan provides Digital Japan tile map  layer provided by GSI,
+Japan onto the openlayers. The OpenLayers Module and its submodules
+bring the OpenLayers JS library into Drupal. 
+You can show Digital Japan map on your site using the OpenLayers module
+and the CyberJapan module.
+
+FEATURES
+--------
+
+CyberJapan now only support a tile map image for base map.
 
 REQUIREMENTS
 ------------
@@ -22,6 +31,12 @@ CONFIGURATION
 -------------
 
 You can use CyberJapan Map as same as OSM mapnik map for Base Layers.
+
+RoadMap & Current State
+-----------------------
+
+* == 1.x == current:  first public version. Only support for basemap. It support only map image.
+* == 2.x == overlay support, ability to select map data collection for layers, photo image layer.
 
 
 CONTACT
@@ -52,6 +67,7 @@ http://portal.cyberjapan.jp/portalsite/kiyaku/kyodaku.html
 You also need to display Digital Japan logo where web site shows Digital Japan map.
 http://cyberjapan.jp/image/logo.gif
 http://portal.cyberjapan.jp/portalsite/q_and_a/ans7.html
+
 
 LICENSE
 --------
