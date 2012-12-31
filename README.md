@@ -80,6 +80,5 @@ Files: *
 Copyright: 2012 Hiroshi Miura and MapBox Inc.
 License: GPLv2+
 
-see LICENSE.txt for details.
 
 
