@@ -21,7 +21,21 @@ REQUIREMENTS
 INSTALLATION
 ------------
 
-Install as usual.
+1. You can get module from github.com
+
+git clone --recursive https://github.com/miurahr/cyberjapan.git
+
+now with --recursive option, you also get cyberjapan-js project into js/ subdirectory
+as submodule.
+
+If you use older git, you may need to do as following:
+
+$ git clone --recursive https://github.com/miurahr/cyberjapan.git
+$ cd cyberjapan
+$ git submodule update --init
+
+
+2. Install as usual.
 
 You can place files at <drupal-root>/site/all/modules/cyberjapan/
 and enable module from administer/module interface.
