@@ -26,6 +26,17 @@ class openlayers_layer_type_cyberjapan extends openlayers_layer_type {
     if (!isset($this->data)) {
       $this->data = $this->options_init();
     }
+    /* define several censitive extents by lon/lat 
+       w/ transform from WGS 1984
+       to Spherical Mercator Projection
+     */
+    var fromProjection = new OpenLayers.Projection("EPSG:4326"); 
+    var toProjection = new OpenLayers.Projection("EPSG:900913"); 
+    var borderExtents =  array(
+      new OpenLayers.Bounds(130.387,36.875,132.277,37.801).transform(fromProjection,toProjection),// takeshima
+      new OpenLayers.Bounds(123.0, 25.0, 124.0, 26.0).transform(fromProjection,toProjection),// senkaku
+    );
+    var allJapanExtent = new OpenLayers.Bounds(122.0,20.0,154.0,46.5).transform(fromProjection,toProjection);
     return array(
       'layername' => array(
         '#type' => 'textfield',
@@ -38,8 +49,10 @@ class openlayers_layer_type_cyberjapan extends openlayers_layer_type {
         '#value' => 'openlayers_layer_type_cyberjapan'
       ),
       'baselayer' => array(
-        '#type' => 'hidden',
-        '#value' => TRUE
+        '#type' => 'checkbox',
+        '#default_value' => $this->data['baselayer'],
+        '#title' => t('BaseLayer'),
+        '#description' => t('Uncheck to make this map an overlay.'),
       ),
       'type' => array(
         '#type' => 'hidden',
@@ -51,6 +64,15 @@ class openlayers_layer_type_cyberjapan extends openlayers_layer_type {
         '#options' => array_combine(array_map('strval', openlayers_get_resolutions('900913')), range(0, 18)),
         '#title' => t('Zoom Level Range'),
         '#default_value' => isset($this->data['resolutions']) ? $this->data['resolutions'] : object()
+      ),
+      'maxExtent' => array(
+        '#type' => 'select',
+        '#multiple' => FALSE,
+        '#title' => 'Extent type',
+        '#options' => array(
+          borderExtents  => 'border',
+          allJapanExtent => 'allJapan',
+        ),
       ),
       'projection' => array(
         '0' => array(
