@@ -38,12 +38,34 @@ function _cyberjapan_openlayers_layers() {
     'projection' => array('900913'),
     'layer_type' => 'openlayers_layer_type_wms',
     'base_url' => 'http://www.finds.jp/ws/tmcwms.php?',
-    'layers' => array('KBN25000ANF-900913'),
-    'TRANSPARENT' => true,
-    'srs' => null,
+    'resolutions' => array_combine(range(0, 18), openlayers_get_resolutions('900913')),
+    'layers' => 'KBN25000ANF-900913',
+    'transparent' => TRUE,
+    'src' => '900913',
+    'params' => array(
+      'isBaseLayer' => FALSE,
+    ),
+  );
+  $layers[$layer->name] = $layer;
+
+  // Kiban TMS
+  $layer = new stdClass();
+  $layer->api_version = 1;
+  $layer->name = 'dnli_pref_name';
+  $layer->title = 'DNLI:Prefecture Names';
+  $layer->description = 'Digital National Land Information, Prefecture Names';
+  $layer->data = array(
+    'osm' => FALSE,
+    'baselayer' => FALSE,
+    'type' => 'png',
+    'attribution' => t('Copyright 2012, Geospatial Information Authority of Japan'),
+    'projection' => array('900913'),
+    'layer_type' => 'openlayers_layer_type_tms',
+    'base_url' => 'http://www.finds.jp/ws/tmc/',
     'resolutions' => array_combine(range(0, 18), openlayers_get_resolutions('900913')),
     'params' => array(
-      'maxextent' => array(13580978,2273031,17143202,5860840),
+      'layername' => 'pntms-900913',
+      'attribution' => '<a target="_blank" href="http://www.finds.jp/wsdocs/pnwms/index.html">地名WMS</a>',
       'isBaseLayer' => FALSE,
     ),
   );
