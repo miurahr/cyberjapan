@@ -12,6 +12,7 @@ class openlayers_layer_type_cyberjapan extends openlayers_layer_type {
       'maxExtent' => openlayers_get_extent('900913'),
       'projection' => array('900913'),
       'osm' => FALSE,
+      'resolutions' => openlayers_get_resolutions('900913'), 
       'baselayer' => TRUE,
       'layer_handler' => 'CyberJapan',
       'layer_type' => 'cyberjapan',
@@ -50,7 +51,7 @@ class openlayers_layer_type_cyberjapan extends openlayers_layer_type {
         '#multiple' => TRUE,
         '#options' => array_combine(array_map('strval', openlayers_get_resolutions('900913')), range(0, 18)),
         '#title' => t('Zoom Level Range'),
-        '#default_value' => isset($this->data['resolutions']) ? $this->data['resolutions'] : object()
+        '#default_value' => $this->data['resolutions'],
       ),
       'projection' => array(
         '0' => array(
