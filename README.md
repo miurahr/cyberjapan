@@ -96,3 +96,7 @@ License: GPLv2+
 
 
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/miurahr/cyberjapan/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
